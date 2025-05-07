@@ -1,0 +1,122 @@
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(
+    100vh - 80px
+  ); /* Adjust 80px based on your actual Navbar height */
+  padding: 0 20px 20px 20px; /* This padding defines the main content width */
+}
+
+.top-content-section {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.homepage-header {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.homepage-header h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.add-project-section {
+  width: 100%; /* Ensure it takes the full width of its parent (.top-content-section) */
+  /* max-width: 850px; */ /* REMOVE this line */
+  margin: 0 auto; /* This will center it if a max-width is ever re-introduced, but not needed if width is 100% */
+}
+
+.section-divider {
+  border: none;
+  border-top: 1px solid #cbd5e0;
+  margin: 30px 0;
+}
+
+.recent-projects-section {
+  width: 100%; /* Takes full width of .homepage-container's content box */
+  padding-top: 0;
+}
+
+.recent-projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.recent-projects-header h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.view-all-button {
+  background: none;
+  border: 1px solid #718096;
+  color: #718096;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.view-all-button:hover {
+  background-color: #edf2f7;
+  color: #4a5568;
+}
+
+.project-list-scrollable-container {
+  max-height: 400px;
+  overflow-y: auto;
+  /* The content width for cards will be 100% minus this padding-right if scrollbar is visible */
+  padding-right: 10px;
+}
+
+.project-list-scrollable-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.project-list-scrollable-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.project-list-scrollable-container::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 10px;
+}
+
+.project-list-scrollable-container::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+.loading-text,
+.no-projects-text {
+  text-align: center;
+  padding: 20px;
+  color: #718096;
+  font-style: italic;
+}
+
+.error-message {
+  color: #e53e3e;
+  background-color: #fff5f5;
+  border: 1px solid #f56565;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 5px;
+  text-align: center;
+}

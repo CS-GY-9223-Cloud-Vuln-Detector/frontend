@@ -1,0 +1,56 @@
+.add-project-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%; /* ADD this line */
+}
+
+.github-url-input {
+  flex-grow: 1; /* This makes it take the available space within the form */
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  background-color: #edf2f7;
+  color: #4a5568;
+}
+
+.github-url-input::placeholder {
+  color: #a0aec0;
+}
+
+.add-project-button {
+  padding: 12px 15px; /* Match padding for height consistency with input */
+  background-color: #4a5568;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.add-project-button:hover {
+  background-color: #2d3748;
+}
+
+.add-project-button:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.form-error,
+.form-success {
+  /* These messages will appear below the form, ensure they are also full width if needed */
+  width: 100%; /* Make error/success messages span the full width of the form */
+  margin-top: 8px;
+  font-size: 0.9rem;
+  text-align: left; /* Or center, depending on preference */
+}
+.form-error {
+  color: #c53030;
+}
+.form-success {
+  color: #2f855a;
+}

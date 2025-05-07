@@ -1,0 +1,84 @@
+/* src/styles/AuthForm.css */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Increased gap for better spacing */
+  width: 100%;
+  max-width: 400px; /* Limit form width for better readability */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px; /* Increased margin */
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #4a5568; /* Medium gray */
+  text-align: left;
+}
+
+.form-group input {
+  padding: 12px 15px; /* Increased padding */
+  border: 1px solid #cbd5e0; /* Lighter gray border */
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #f7fafc; /* Very light gray background */
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #5a67d8; /* Accent color on focus - adjust to your theme */
+  box-shadow: 0 0 0 2px rgba(90, 103, 216, 0.2);
+}
+
+.submit-button {
+  padding: 12px 15px;
+  background-color: #5a67d8; /* Primary button color - adjust to your theme */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 10px; /* Add some space above the button */
+}
+
+.submit-button:hover {
+  background-color: #434190; /* Darker shade on hover */
+}
+
+.submit-button:disabled {
+  background-color: #a0aec0; /* Gray out when disabled */
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #e53e3e; /* Red for error messages */
+  background-color: #fff5f5; /* Light red background for error */
+  border: 1px solid #f56565;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.auth-switch-link {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.auth-switch-link a {
+  color: #5a67d8; /* Accent color for link - adjust to your theme */
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.auth-switch-link a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,40 @@
+.project-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* Makes the whole area clickable */
+}
+
+.project-card {
+  background-color: #e2e8f0; /* Light gray background, similar to wireframe */
+  padding: 20px;
+  border-radius: 8px;
+  /* box-shadow: 0 2px 5px rgba(0,0,0,0.05); */ /* Subtle shadow if desired, wireframe is flat */
+  border: 1px solid #cbd5e0; /* Border similar to wireframe gray boxes */
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  /* box-shadow: 0 4px 10px rgba(0,0,0,0.08); */
+}
+
+.project-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d3748; /* Darker text for project name */
+  margin-bottom: 10px;
+}
+
+.project-info p {
+  font-size: 0.9rem;
+  color: #4a5568; /* Medium gray for info text */
+  margin-bottom: 5px;
+  line-height: 1.4;
+}
+
+.project-info .info-value {
+  font-weight: 500;
+  color: #2d3748; /* Slightly darker for values */
+}

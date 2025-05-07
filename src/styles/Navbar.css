@@ -1,0 +1,59 @@
+.navbar {
+  background-color: #ffffff; /* White navbar background */
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.navbar-brand .brand-link {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333; /* Dark text for brand */
+  display: flex;
+  align-items: center;
+}
+
+.shield-icon {
+  margin-right: 0.5rem;
+  color: #5a67d8; /* A purple/blue color, adjust to match shield in images if possible */
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-item {
+  margin-left: 1rem;
+  padding: 0.5rem 0.75rem;
+  color: #555;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.navbar-item:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.logout-button {
+  background-color: #e53e3e; /* Red for logout */
+  color: white;
+  border: none;
+}
+.logout-button:hover {
+  background-color: #c53030;
+}
+
+.user-display {
+  /* Mimic the gray box with "Name" from Homepage.png */
+  background-color: #e2e8f0; /* Light gray */
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  color: #4a5568; /* Darker gray text */
+  margin-right: 1rem; /* Space before logout button */
+  font-weight: 500;
+}

@@ -1,0 +1,6 @@
+/* src/styles/ProjectList.css */
+.project-list {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr; /* Each card takes full width within the scrollable container */
+}
