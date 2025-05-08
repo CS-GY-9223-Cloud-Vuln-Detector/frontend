@@ -95,28 +95,27 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // Locate the register function and update it - around line 97
   const register = async (userData) => {
     try {
-      // const response = await api.post('/auth/register', userData); // Your actual register endpoint
-      // const { token, newUser } = response.data;
+      const response = await api.post("/auth/register", userData);
 
-      // -------- Mock Register Start --------
-      console.log("Attempting registration with:", userData);
-      await new Promise((resolve) => setTimeout(resolve, 500)); // Simulate API call
-      const token = "fake-jwt-token-new-user";
-      const newUser = {
-        email: userData.email,
-        name: userData.name || "New User",
-      };
-      // -------- Mock Register End --------
-
-      localStorage.setItem("accessToken", token);
-      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      setUser(newUser);
-      return { success: true };
+      // Check if the request was successful
+      if (response.data.success) {
+        // For email verification flow, we don't set tokens or login the user yet
+        // Just return success with the user data
+        return {
+          success: true,
+          userData: response.data.data.user,
+        };
+      } else {
+        return {
+          success: false,
+          message: response.data.message || "Registration failed",
+        };
+      }
     } catch (error) {
       console.error("Registration failed:", error);
-      // logout();
       return {
         success: false,
         message: error.response?.data?.message || "Registration failed",

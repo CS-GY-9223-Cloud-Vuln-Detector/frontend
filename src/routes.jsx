@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ProjectDetailPage from "./pages/ProjectDetailPage";
 import ScanReportPage from "./pages/ScanReportPage";
+import EmailVerificationPage from "./pages/EmailVerificationPage";
 import { useAuth } from "./hooks/useAuth";
 
 // ProtectedRoute component
@@ -25,6 +26,7 @@ const AppRoutes = () => {
     <Routes>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/verify-email" element={<EmailVerificationPage />} />
       <Route
         path="/"
         element={

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { getProjectById } from "../services/projectsService";
-import { getProjectScans } from "../services/scansService";
+import { getProjectScans, triggerScan } from "../services/scansService";
 import "../styles/ProjectDetailPage.css";
 
 // Helper functions
@@ -41,6 +41,7 @@ const ProjectDetailPage = () => {
   const [scans, setScans] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isScanLoading, setIsScanLoading] = useState(false);
 
   useEffect(() => {
     const fetchProjectData = async () => {
@@ -92,6 +93,26 @@ const ProjectDetailPage = () => {
     );
   }
 
+  const handleScanNow = async () => {
+    try {
+      setIsScanLoading(true);
+      const scanResult = await triggerScan(projectId);
+
+      // Add the new scan to the scans list if successful
+      if (scanResult) {
+        // Refresh the scans list to show the new scan
+        const scansData = await getProjectScans(projectId);
+        setScans(scansData || []);
+      }
+    } catch (error) {
+      console.error("Error triggering scan:", error);
+      // Show error message to user
+      alert("Failed to start scan. Please try again.");
+    } finally {
+      setIsScanLoading(false);
+    }
+  };
+
   return (
     <div className="project-detail-page">
       <div className="page-header">
@@ -140,7 +161,13 @@ const ProjectDetailPage = () => {
         </div>
 
         <div className="project-actions">
-          <button className="scan-now-btn">Scan Now</button>
+          <button
+            className="scan-now-btn"
+            onClick={handleScanNow}
+            disabled={isScanLoading}
+          >
+            Scan Now
+          </button>
         </div>
       </div>
 

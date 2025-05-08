@@ -208,8 +208,18 @@
   cursor: pointer;
 }
 
+.view-details-btn:disabled {
+  background-color: #e2e8f0;
+  color: #a0aec0;
+  cursor: not-allowed;
+}
+
 .view-details-btn:hover {
   background-color: #3182ce;
+}
+
+.view-details-btn:disabled:hover {
+  background-color: #e2e8f0;
 }
 
 .loading-container {

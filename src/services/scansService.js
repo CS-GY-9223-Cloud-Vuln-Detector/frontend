@@ -14,3 +14,13 @@ export const getProjectScans = async (projectId) => {
     throw error;
   }
 };
+
+export const triggerScan = async (projectId) => {
+  try {
+    const response = await api.post(`/scans/`, { project_id: projectId });
+    return response.data?.data; // Returning the scan_id
+  } catch (error) {
+    console.error(`Error triggering scan for project ${projectId}:`, error);
+    throw error;
+  }
+};

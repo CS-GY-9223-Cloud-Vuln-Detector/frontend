@@ -1,11 +1,10 @@
-// src/components/Auth/RegisterForm.jsx
 import React, { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate, Link } from "react-router-dom";
-import "../../styles/AuthForm.css"; // Reusing the same CSS as LoginForm
+import "../../styles/AuthForm.css";
 
 const RegisterForm = () => {
-  const [name, setName] = useState(""); // Added name field
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -31,18 +30,12 @@ const RegisterForm = () => {
       return;
     }
 
-    // Basic password strength (optional, can be more complex)
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters long.");
-      setIsSubmitting(false);
-      return;
-    }
-
     try {
-      // The register function in AuthContext might expect { name, email, password }
       const result = await register({ name, email, password });
       if (result.success) {
-        navigate("/"); // Redirect to homepage or dashboard on successful registration
+        // Instead of redirecting to home, redirect to email verification page
+        // Pass the email to the verification page so it can be displayed
+        navigate("/verify-email", { state: { email } });
       } else {
         setError(result.message || "Registration failed. Please try again.");
       }
@@ -56,6 +49,7 @@ const RegisterForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="auth-form">
+      {/* Rest of the form remains unchanged */}
       <div className="form-group">
         <label htmlFor="name">Full Name</label>
         <input

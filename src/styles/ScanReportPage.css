@@ -105,7 +105,7 @@
   .scan-report-content {
     flex-direction: column;
   }
-  
+
   .scan-summary-column,
   .vulnerabilities-column {
     width: 100%;
