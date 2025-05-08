@@ -1,0 +1,70 @@
+/* src/styles/ScanSummary.css */
+.scan-summary-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+  border: 1px solid #e0e0e0; /* Border consistent with screenshots */
+}
+
+.summary-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #343a40;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  ); /* Responsive grid */
+  gap: 15px;
+}
+
+.summary-item {
+  background-color: #f8f9fa; /* Light background for individual items */
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #e9ecef;
+}
+
+.summary-label {
+  display: block;
+  font-size: 0.85rem;
+  color: #6c757d; /* Gray label text */
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.summary-value {
+  font-size: 1rem;
+  color: #212529; /* Darker value text */
+  font-weight: 600;
+  word-break: break-all; /* Prevent long IDs from breaking layout */
+}
+
+/* Optional styling for vulnerability counts list */
+.vulnerability-counts {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+.vulnerability-counts h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.vulnerability-counts ul {
+  list-style: none;
+  padding-left: 0;
+}
+.vulnerability-counts li {
+  font-size: 0.9rem;
+  color: #495057;
+  margin-bottom: 4px;
+}

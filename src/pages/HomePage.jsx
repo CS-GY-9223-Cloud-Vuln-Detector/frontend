@@ -13,14 +13,22 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+  const fetchRecentProjects = async () => {
     try {
       setIsLoading(true);
       setError(null);
-      getProjects();
+      const data = await getProjects();
+      setProjects(data);
+    } catch (err) {
+      setError(err.message || "Failed to fetch projects");
+      console.error("Error fetching projects:", err);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  useEffect(() => {
+    fetchRecentProjects();
   }, []);
 
   const handleProjectAdded = (newProjectData) => {

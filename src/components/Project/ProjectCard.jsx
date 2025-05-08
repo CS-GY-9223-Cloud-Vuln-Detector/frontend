@@ -1,44 +1,93 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../styles/ProjectCard.css"; // Create this file for styling
+import "../../styles/ProjectCard.css";
 
 const ProjectCard = ({ project }) => {
-  // Fallback for missing data
+  // Destructure with fallbacks for missing data
   const {
     id,
     name = "Unnamed Project",
-    linesOfCode = "N/A",
-    language = "N/A",
-    currentErrors = "N/A", // Or use 'vulnerabilities'
-    // lastScanned // This data is in image_acae89.jpg but not explicitly in Homepage.png's project card
+    currentErrors = "N/A",
+    created_at,
+    modified_at,
+    repo_url,
+    file_count = 0,
+    project_last_scanned_at,
   } = project;
 
-  // Based on Homepage.png, the card shows: Project Name, Info (lines of code, language, current errors)
-  // Based on image_acae89.jpg, we see: Project ID, Requested By, Scanned Files, Total Vulnerabilities, Status, Created At, Last Modified
+  // Format dates
+  const formatDate = (dateString) => {
+    if (!dateString) return "Never";
+    return new Date(dateString).toLocaleDateString();
+  };
 
-  // Let's try to blend relevant info from Homepage.png for the card on the homepage
-  // and acknowledge other details might be on a detail page.
+  // Determine vulnerability severity class
+  const getVulnerabilityClass = () => {
+    if (currentErrors === "N/A" || currentErrors === 0) return "severity-none";
+    if (currentErrors < 3) return "severity-low";
+    if (currentErrors < 6) return "severity-medium";
+    return "severity-high";
+  };
+
+  // Get repository name from URL
+  const getRepoName = () => {
+    if (!repo_url) return "N/A";
+    try {
+      return new URL(repo_url).pathname.split("/").pop();
+    } catch (e) {
+      return repo_url;
+    }
+  };
 
   return (
-    <Link to={`/project/${id}`} className="project-card-link">
+    <Link to={`/projects/${id}`} className="project-card-link">
       <div className="project-card">
-        <h3 className="project-name">{name}</h3>
-        <div className="project-info">
-          <p>
-            Language: <span className="info-value">{language}</span>
-          </p>
-          <p>
-            Lines of Code: <span className="info-value">{linesOfCode}</span>
-          </p>
-          <p>
-            Current Vulnerabilities:{" "}
-            <span className="info-value">{currentErrors}</span>
-          </p>
-          {/*
-            From image_acae89.jpg, we could also show:
-            <p>Status: <span className="info-value">{project.status || "N/A"}</span></p>
-            <p>Last Modified: <span className="info-value">{project.lastModified ? new Date(project.lastModified).toLocaleString() : "N/A"}</span></p>
-          */}
+        <div className="card-header">
+          <h3 className="project-name">{name}</h3>
+          <div className={`vulnerability-badge ${getVulnerabilityClass()}`}>
+            {currentErrors}
+          </div>
+        </div>
+
+        <div className="repo-section">
+          <b className="icon repo-icon">📁</b>
+          <a
+            href={repo_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="repo-link"
+          >
+            {getRepoName()}
+          </a>
+        </div>
+
+        <div className="project-details">
+          <div className="detail-item">
+            <b className="icon">📄</b>
+            <span className="detail-label">Files</span>
+            <span className="detail-value">{file_count}</span>
+          </div>
+
+          <div className="detail-item">
+            <b className="icon">🕒</b>
+            <span className="detail-label">Created</span>
+            <span className="detail-value">{formatDate(created_at)}</span>
+          </div>
+
+          <div className="detail-item">
+            <b className="icon">✏️</b>
+            <span className="detail-label">Modified</span>
+            <span className="detail-value">{formatDate(modified_at)}</span>
+          </div>
+
+          <div className="detail-item">
+            <b className="icon">🔍</b>
+            <span className="detail-label">Scanned</span>
+            <span className="detail-value">
+              {formatDate(project_last_scanned_at)}
+            </span>
+          </div>
         </div>
       </div>
     </Link>

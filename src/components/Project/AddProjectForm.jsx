@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import api from "../../services/api";
+import { addProject } from "../../services/projectsService";
 import "../../styles/AddProjectForm.css"; // Create this file for styling
 
 const AddProjectForm = ({ onProjectAdded }) => {
@@ -14,36 +14,15 @@ const AddProjectForm = ({ onProjectAdded }) => {
       setError("GitHub URL cannot be empty.");
       return;
     }
-    // Basic URL validation (can be more sophisticated)
-    if (!githubUrl.startsWith("https://github.com/")) {
-      setError(
-        "Please enter a valid GitHub repository URL (e.g., https://github.com/user/repo).",
-      );
-      return;
-    }
 
     setIsSubmitting(true);
     setError(null);
     setSuccessMessage("");
 
     try {
-      // Replace with your actual endpoint to add a project
-      // The backend should handle fetching info from the GitHub URL
-      // const response = await api.post('/projects', { githubUrl });
-      // onProjectAdded(response.data); // Pass the newly created project data up
+      const newProjecId = await addProject(githubUrl);
 
-      // -------- Mock API Call Start --------
-      console.log("Submitting GitHub URL:", githubUrl);
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate API call
-      // Simulate success
-      const mockNewProject = {
-        id: Date.now().toString(), // Generate a mock ID
-        name: githubUrl.split("/").slice(-2).join("/"), // Extract repo name from URL
-        url: githubUrl,
-        // ... other initial data the backend might return
-      };
-      onProjectAdded(mockNewProject); // Call the callback
-      // -------- Mock API Call End --------
+      onProjectAdded(newProjecId); // Call the callback
 
       setSuccessMessage(`Project from ${githubUrl} added successfully!`);
       setGithubUrl(""); // Clear the input field

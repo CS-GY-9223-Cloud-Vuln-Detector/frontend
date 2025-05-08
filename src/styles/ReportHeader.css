@@ -1,0 +1,72 @@
+/* src/styles/ReportHeader.css */
+.report-header-container {
+  background-color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+  border: 1px solid #e0e0e0;
+}
+
+.report-page-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #343a40; /* Darker title */
+  margin-bottom: 15px;
+  display: flex; /* For icon alignment if you add one */
+  align-items: center;
+}
+/* Example: .report-page-title .icon { margin-right: 10px; } */
+
+.report-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between control groups and buttons */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.control-group label {
+  font-size: 0.9rem;
+  color: #495057;
+  font-weight: 500;
+}
+
+.control-group input[type="text"] {
+  padding: 8px 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  min-width: 200px; /* Give inputs some base width */
+}
+
+.fetch-button,
+.download-pdf-button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.fetch-button {
+  background-color: #007bff; /* Blue for primary action */
+}
+.fetch-button:hover {
+  background-color: #0056b3;
+}
+
+.download-pdf-button {
+  background-color: #6c757d; /* Gray for secondary action */
+}
+.download-pdf-button:hover {
+  background-color: #545b62;
+}

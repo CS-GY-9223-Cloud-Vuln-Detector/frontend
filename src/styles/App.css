@@ -7,7 +7,7 @@
 .main-content {
   flex-grow: 1;
   padding: 20px; /* Add some padding around content */
-  max-width: 1200px; /* Max width for content area */
+  max-width: 95%; /* Max width for content area */
   margin: 0 auto; /* Center content */
   width: 100%;
 }

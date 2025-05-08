@@ -3,8 +3,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-// import DashboardPage from './pages/DashboardPage';
-// import ProjectDetailPage from './pages/ProjectDetailPage';
+import ProjectDetailPage from "./pages/ProjectDetailPage";
+import ScanReportPage from "./pages/ScanReportPage";
 import { useAuth } from "./hooks/useAuth";
 
 // ProtectedRoute component
@@ -33,23 +33,22 @@ const AppRoutes = () => {
           </ProtectedRoute>
         }
       />
-      {/* <Route
-        path="/dashboard"
-        element={
-          <ProtectedRoute>
-            <DashboardPage />
-          </ProtectedRoute>
-        }
-      /> */}
-      {/* <Route
-        path="/project/:projectId" // Dynamic route for project details
+      <Route
+        path="/projects/:projectId"
         element={
           <ProtectedRoute>
             <ProjectDetailPage />
           </ProtectedRoute>
         }
-      /> */}
-      {/* Add other routes here */}
+      />
+      <Route
+        path="/projects/:projectId/scans/:scanId" // Route for the specific scan report page
+        element={
+          <ProtectedRoute>
+            <ScanReportPage />
+          </ProtectedRoute>
+        }
+      />
       <Route path="*" element={<Navigate to="/" />} /> {/* Fallback route */}
     </Routes>
   );

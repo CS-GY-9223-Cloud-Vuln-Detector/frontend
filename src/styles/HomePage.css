@@ -8,7 +8,7 @@
 }
 
 .top-content-section {
-  flex-grow: 1;
+  flex-grow: 0.5;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,6 +44,7 @@
 .recent-projects-section {
   width: 100%; /* Takes full width of .homepage-container's content box */
   padding-top: 0;
+  margin-top: -5px;
 }
 
 .recent-projects-header {
@@ -83,6 +84,7 @@
   overflow-y: auto;
   /* The content width for cards will be 100% minus this padding-right if scrollbar is visible */
   padding-right: 10px;
+  padding-bottom: 20px;
 }
 
 .project-list-scrollable-container::-webkit-scrollbar {
