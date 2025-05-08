@@ -1,8 +1,7 @@
 // src/pages/ScanReportPage.jsx
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import api from "../services/api";
-import ReportHeader from "../components/Report/ReportHeader";
+import { getScanReport } from "../services/reportsService";
 import ScanSummary from "../components/Report/ScanSummary";
 import VulnerabilityList from "../components/Report/VulnerabilityList";
 import "../styles/ScanReportPage.css"; // Create this CSS file
@@ -17,9 +16,9 @@ const mockReportData = {
   // Alternative fields from image_acb195.jpg
   totalFilesScanned: 2,
   vulnerabilityCounts: [
-    { type: 'Hardcoded credentials', count: 1 },
-    { type: 'SQL Injection prone', count: 1 },
-    { type: 'XSS Cross-scripting attack prone', count: 1 },
+    { type: "Hardcoded credentials", count: 1 },
+    { type: "SQL Injection prone", count: 1 },
+    { type: "XSS Cross-scripting attack prone", count: 1 },
   ],
   vulnerabilities: [
     {
@@ -89,23 +88,9 @@ const ScanReportPage = () => {
       // In a real app, fetch real data from API
       // For now, using mock data with delay to simulate API call
       console.log(`Fetching report for Project: ${projectId}, Scan: ${scanId}`);
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Check if project/scan IDs match mock data
-      if (projectId === mockReportData.projectId && scanId === mockReportData.scanId) {
-        setProjectData({
-          id: projectId,
-          name: mockReportData.projectName,
-        });
-        setReportData(mockReportData);
-      } else {
-        setError(`No report found for Project ID: ${projectId} and Scan ID: ${scanId}.`);
-        setProjectData({
-          id: projectId,
-          name: "Project " + projectId.slice(0, 8),
-        });
-        setReportData(null);
-      }
+
+      const report = await getScanReport(projectId, scanId);
+      setReportData(report);
     } catch (err) {
       console.error("Failed to fetch project or report data:", err);
       setError(err.message || "Could not load report data.");

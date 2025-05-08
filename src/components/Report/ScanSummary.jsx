@@ -9,35 +9,31 @@ const ScanSummary = ({ summary }) => {
     <div className="scan-summary-card">
       <h2 className="summary-title">Scan Overview</h2>
       <div className="summary-grid">
-        <div className="summary-item">
+        {/* <div className="summary-item">
           <span className="summary-label">Project ID:</span>
-          <span className="summary-value">{summary.projectId}</span>
+          <span className="summary-value">{summary.project_id}</span>
         </div>
         <div className="summary-item">
           <span className="summary-label">Scan ID:</span>
-          <span className="summary-value">{summary.scanId}</span>
-        </div>
+          <span className="summary-value">{summary.scan_id}</span>
+        </div> */}
         <div className="summary-item">
           <span className="summary-label">Project Name:</span>
-          <span className="summary-value">{summary.projectName || "N/A"}</span>
+          <span className="summary-value">{summary.project_name || "N/A"}</span>
         </div>
         <div className="summary-item">
           <span className="summary-label">Total Vulnerabilities:</span>
-          <span className="summary-value">{summary.totalVulnerabilities}</span>
+          <span className="summary-value">{summary.total_vuln_count}</span>
         </div>
         <div className="summary-item">
-          <span className="summary-label">Files Affected:</span>
-          <span className="summary-value">{summary.filesAffected}</span>
+          <span className="summary-label">Scanned Files:</span>
+          <span className="summary-value">{summary.scanned_files_count}</span>
         </div>
-        {/* <div className="summary-item">
-          <span className="summary-label">Total Files Scanned:</span>
-          <span className="summary-value">{summary.totalFilesScanned || 'N/A'}</span>
-        </div> */}
-        {summary.createdAt && (
+        {summary.scan_requested_at && (
           <div className="summary-item">
             <span className="summary-label">Scan Date:</span>
             <span className="summary-value">
-              {new Date(summary.createdAt).toLocaleString()}
+              {new Date(summary.scan_requested_at).toLocaleString()}
             </span>
           </div>
         )}
