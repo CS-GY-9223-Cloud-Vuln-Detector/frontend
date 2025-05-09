@@ -68,3 +68,47 @@
   color: #495057;
   margin-bottom: 4px;
 }
+
+.summary-actions {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.download-pdf-button {
+  background-color: #3182ce;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+.download-pdf-button:hover {
+  background-color: #2c5282;
+  transform: translateY(-1px);
+}
+
+.download-pdf-button:active {
+  transform: translateY(0px);
+}
+
+.download-pdf-button:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+}
+
+/* Optional: Add an icon before the text */
+.download-pdf-button::before {
+  content: "📄";
+  margin-right: 8px;
+}

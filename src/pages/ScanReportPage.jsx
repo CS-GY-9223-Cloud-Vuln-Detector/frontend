@@ -4,73 +4,11 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { getScanReport } from "../services/reportsService";
 import ScanSummary from "../components/Report/ScanSummary";
 import VulnerabilityList from "../components/Report/VulnerabilityList";
-import "../styles/ScanReportPage.css"; // Create this CSS file
-
-// Mock data structure based on screenshots
-const mockReportData = {
-  projectId: "288732f8-56b7-473c-ba3f-b7194d3ff4d5",
-  scanId: "312f7035-42ff-4ff4-8c89-620562bf7e62",
-  projectName: "Monitored GitHub Repo X", // Added for better display
-  totalVulnerabilities: 14, // From image_62ef6f.jpg
-  filesAffected: 3, // From image_62ef6f.jpg
-  // Alternative fields from image_acb195.jpg
-  totalFilesScanned: 2,
-  vulnerabilityCounts: [
-    { type: "Hardcoded credentials", count: 1 },
-    { type: "SQL Injection prone", count: 1 },
-    { type: "XSS Cross-scripting attack prone", count: 1 },
-  ],
-  vulnerabilities: [
-    {
-      id: "vuln1",
-      fileName: "attacks.py",
-      fileType: "python",
-      fileLOC: 293,
-      fileUrl: "#", // Link to file view
-      lineNumber: "6-8",
-      description:
-        "Consider possible security implications associated with pickle module.",
-      codeSnippet: `5 import base64\n6 import pickle\n7 import sqlite3`,
-      suggestion: "LLM couldn't generate a suggestion for this error", // Or "The pickle module is not secure..."
-      severity: "High", // Added for potential future use
-    },
-    {
-      id: "vuln2",
-      fileName: "attacks.py",
-      fileType: "python",
-      fileLOC: 293,
-      fileUrl: "#",
-      lineNumber: "8-9",
-      description:
-        "Consider possible security implications associated with the subprocess module.",
-      codeSnippet: `7 import sqlite3\n8 import subprocess\n9 import urllib.request`,
-      suggestion:
-        'Securely fix "Escaping and Neutralization of Special Elements": To fix the issue of improper neutralization of special elements used in an OS command, the following generic secure fix can be implemented: 1. "Input Validation and Sanitization": Validate and sanitize all input data that is used to construct the OS command. This includes checking for any special characters or metacharacters that could be used to manipulate the command.',
-      severity: "Medium",
-    },
-    {
-      id: "vuln3", // From image_acb195.jpg
-      fileName: "auth.py",
-      fileType: "python",
-      fileLOC: 120,
-      fileUrl: "#",
-      vulnerabilityName: "Hardcoded credentials", // Specific name from image_acb195
-      description: "Plaintext secrets or credentials in source.", // More generic description
-      lineNumber: "25-23", // Example
-      codeSnippet:
-        'SECRET_KEY = "supersecretkey123!"\nDB_PASSWORD = "password123"', // Example
-      suggestion:
-        "Store secrets in environment variables or a secure vault. Do not hardcode them in the source code. Use libraries like `python-dotenv` to load environment variables.",
-      severity: "Critical",
-    },
-  ],
-  createdAt: "2024-05-07T10:30:00Z", // Example
-};
+import "../styles/ScanReportPage.css";
 
 const ScanReportPage = () => {
   const { projectId, scanId } = useParams();
   const navigate = useNavigate();
-  const [projectData, setProjectData] = useState(null);
   const [reportData, setReportData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -85,8 +23,6 @@ const ScanReportPage = () => {
     setIsLoading(true);
     setError(null);
     try {
-      // In a real app, fetch real data from API
-      // For now, using mock data with delay to simulate API call
       console.log(`Fetching report for Project: ${projectId}, Scan: ${scanId}`);
 
       const report = await getScanReport(projectId, scanId);
