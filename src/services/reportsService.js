@@ -81,9 +81,7 @@ const handleDownloadPDF = async () => {
 export const downloadReportPDF = async (projectId, scanId) => {
   try {
     // Create a customized axios request for blob data
-    const response = await api({
-      baseURL: "http://100.26.184.89",
-    }).get(`/report/${projectId}/${scanId}/pdf`, {
+    const response = await api.get(`http://100.26.184.89/report/${projectId}/${scanId}/pdf`, {
       responseType: "blob", // Important: We need a blob response
       headers: {
         Accept: "application/pdf",
