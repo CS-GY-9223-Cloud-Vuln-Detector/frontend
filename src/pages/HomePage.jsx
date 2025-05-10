@@ -57,12 +57,12 @@ const HomePage = () => {
       <section className="recent-projects-section">
         <div className="recent-projects-header">
           <h2>Recent Projects</h2>
-          {projects.length > 0 && (
+          {/* {projects.length > 0 && (
             // Ensure DashboardPage is set up in your routes.jsx
             <Link to="/dashboard" className="view-all-button">
               View All
             </Link>
-          )}
+          )} */}
         </div>
         <div className="project-list-scrollable-container">
           {" "}
